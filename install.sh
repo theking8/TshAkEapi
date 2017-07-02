@@ -52,4 +52,3 @@ wget http://luarocks.org/releases/luarocks-2.2.2.tar.gz
  chmod +x tg
  chmod +x TSHAKE.sh
  chmod +x TSHAKE-Auto.sh
- ./TSHAKE.sh
