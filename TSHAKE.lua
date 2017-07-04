@@ -8495,12 +8495,7 @@ if text:match("^source$") or text:match("^اصدار$") or text:match("^الاص
 
 <code>المطورين : </code>
 
-<b>Dev | </b>@lIMyIl
-<b>Dev | </b>@IX00XI
-<b>Dev | </b>@lIESIl
-<b>Dev | </b>@H_173
-<b>Dev | </b>@h_k_a
-<b>Dev | </b>@EMADOFFICAL
+<b> TshAkE TEAM </b>
 
 <code>قناه السورس : </code>
 
