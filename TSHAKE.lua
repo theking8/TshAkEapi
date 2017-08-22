@@ -7275,8 +7275,8 @@ send(msg.chat_id_, msg.id_, 1, '_> Has been removed_ '..text..' *Developer of bo
 else
 send(msg.chat_id_, msg.id_, 1, '• `تم حذفه`  '..text..' `من مطورين البوت`⚠️', 1, 'md')
 end
-redis:set('xkeko'..msg.sender_user_id_..''..bot_id, 'yes')  
-redis:set('sudoo'..text..''..bot_id, 'no')  
+redis:set('xkeko'..msg.sender_user_id_..''..bot_id, 'no')  
+redis:del('sudoo'..text..''..bot_id, 'no')  
  end  
 end
 
