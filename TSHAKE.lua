@@ -3270,7 +3270,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
 	          local text = msg.content_.text_:gsub('رفع ادمن للبوت','setadmin')
-	if text:match("^[Ss][Ee][Tt][Aa][Dd][Mm][Ii][Nn]$") and is_sudo(msg) and msg.reply_to_message_id_ then
+	if text:match("^[Ss][Ee][Tt][Aa][Dd][Mm][Ii][Nn]$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 	function addadmin_by_reply(extra, result, success)
 	local hash = 'bot:admins:' 
 	if database:sismember(hash, result.sender_user_id_) then
@@ -3291,7 +3291,7 @@ end
 	      getMessage(msg.chat_id_, msg.reply_to_message_id_,addadmin_by_reply)
     end
 	-----------------------------------------------------------------------------------------------
-	if text:match("^[Ss][Ee][Tt][Aa][Dd][Mm][Ii][Nn] @(.*)$") and is_sudo(msg) then
+	if text:match("^[Ss][Ee][Tt][Aa][Dd][Mm][Ii][Nn] @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 	local ap = {string.match(text, "^([Ss][Ee][Tt][Aa][Dd][Mm][Ii][Nn]) @(.*)$")} 
 	function addadmin_by_username(extra, result, success)
 	if result.id_ then
@@ -3313,7 +3313,7 @@ end
 	      resolve_username(ap[2],addadmin_by_username)
     end
 	-----------------------------------------------------------------------------------------------
-	if text:match("^[Ss][Ee][Tt][Aa][Dd][Mm][Ii][Nn] (%d+)$") and is_sudo(msg) then
+	if text:match("^[Ss][Ee][Tt][Aa][Dd][Mm][Ii][Nn] (%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 	local ap = {string.match(text, "^([Ss][Ee][Tt][Aa][Dd][Mm][Ii][Nn]) (%d+)$")} 	
 	        database:sadd('bot:admins:', ap[2])
 		     if database:get('lang:gp:'..msg.chat_id_) then
@@ -3324,7 +3324,7 @@ end
     end
 	-----------------------------------------------------------------------------------------------
           local text = msg.content_.text_:gsub('تنزيل ادمن للبوت','remadmin')
-	if text:match("^[Rr][Ee][Mm][Aa][Dd][Mm][Ii][Nn]$") and is_sudo(msg) and msg.reply_to_message_id_ then
+	if text:match("^[Rr][Ee][Mm][Aa][Dd][Mm][Ii][Nn]$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) and msg.reply_to_message_id_ then
 	function deadmin_by_reply(extra, result, success)
 	local hash = 'bot:admins:'
 	if not database:sismember(hash, result.sender_user_id_) then
@@ -3346,7 +3346,7 @@ end
 	      getMessage(msg.chat_id_, msg.reply_to_message_id_,deadmin_by_reply)
     end
 	-----------------------------------------------------------------------------------------------
-	if text:match("^[Rr][Ee][Mm][Aa][Dd][Mm][Ii][Nn] @(.*)$") and is_sudo(msg) then
+	if text:match("^[Rr][Ee][Mm][Aa][Dd][Mm][Ii][Nn] @(.*)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 	local hash = 'bot:admins:'
 	local ap = {string.match(text, "^([Rr][Ee][Mm][Aa][Dd][Mm][Ii][Nn]) @(.*)$")} 
 	function remadmin_by_username(extra, result, success)
@@ -3369,7 +3369,7 @@ end
 	      resolve_username(ap[2],remadmin_by_username)
     end
 	-----------------------------------------------------------------------------------------------
-	if text:match("^[Rr][Ee][Mm][Aa][Dd][Mm][Ii][Nn] (%d+)$") and is_sudo(msg) then
+	if text:match("^[Rr][Ee][Mm][Aa][Dd][Mm][Ii][Nn] (%d+)$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
 	local hash = 'bot:admins:'
 	local ap = {string.match(text, "^([Rr][Ee][Mm][Aa][Dd][Mm][Ii][Nn]) (%d+)$")} 	
          database:srem(hash, ap[2])
@@ -3537,7 +3537,7 @@ end
 	send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 
-  if msg.content_.text_:match("^[Gg][Bb][Aa][Nn][Ll][Ii][Ss][Tt]$") and is_sudo(msg) or msg.content_.text_:match("^قائمه العام$") and is_sudo(msg) then
+  if msg.content_.text_:match("^[Gg][Bb][Aa][Nn][Ll][Ii][Ss][Tt]$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) or msg.content_.text_:match("^قائمه العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
     local hash =  'bot:gbanned:'
     local list = database:smembers(hash)
   if database:get('lang:gp:'..msg.chat_id_) then
@@ -3564,7 +3564,7 @@ end
 	send(msg.chat_id_, msg.id_, 1, text, 1, 'html')
           end
 	-----------------------------------------------------------------------------------------------
-	if text:match("^[Aa][Dd][Mm][Ii][Nn][Ll][Ii][Ss][Tt]$") and is_sudo(msg) or text:match("^ادمنيه البوت$") and is_sudo(msg) then
+	if text:match("^[Aa][Dd][Mm][Ii][Nn][Ll][Ii][Ss][Tt]$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) or text:match("^ادمنيه البوت$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
     local hash =  'bot:admins:'
 	local list = database:smembers(hash)
   if database:get('lang:gp:'..msg.chat_id_) then
@@ -3739,7 +3739,7 @@ end
 	end
 	-----------------------------------------------------------------------------------------------
           local text = msg.content_.text_:gsub('وضع تكرار بالطرد','flood ban')
-	if text:match("^[Ff][Ll][Oo][Oo][Dd] [Bb][Aa][Nn] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
+	if text:match("^[Ff][Ll][Oo][Oo][Dd] [Bb][Aa][Nn] (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
 	local floodmax = {string.match(text, "^([Ff][Ll][Oo][Oo][Dd] [Bb][Aa][Nn]) (%d+)$")} 
 	if tonumber(floodmax[2]) < 2 then
                 if database:get('lang:gp:'..msg.chat_id_) then
@@ -3758,7 +3758,7 @@ end
 end
 
           local text = msg.content_.text_:gsub('وضع تكرار بالكتم','flood mute')
-	if text:match("^[Ff][Ll][Oo][Oo][Dd] [Mm][Uu][Tt][Ee] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
+	if text:match("^[Ff][Ll][Oo][Oo][Dd] [Mm][Uu][Tt][Ee] (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
 	local floodmax = {string.match(text, "^([Ff][Ll][Oo][Oo][Dd] [Mm][Uu][Tt][Ee]) (%d+)$")} 
 	if tonumber(floodmax[2]) < 2 then
                 if database:get('lang:gp:'..msg.chat_id_) then
@@ -3776,7 +3776,7 @@ end
 	end
 end
           local text = msg.content_.text_:gsub('وضع تكرار بالمسح','flood del')
-	if text:match("^[Ff][Ll][Oo][Oo][Dd] [Dd][Ee][Ll] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
+	if text:match("^[Ff][Ll][Oo][Oo][Dd] [Dd][Ee][Ll] (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
 	local floodmax = {string.match(text, "^([Ff][Ll][Oo][Oo][Dd] [Dd][Ee][Ll]) (%d+)$")} 
 	if tonumber(floodmax[2]) < 2 then
                 if database:get('lang:gp:'..msg.chat_id_) then
@@ -3832,7 +3832,7 @@ end
 
 	-----------------------------------------------------------------------------------------------
           local text = msg.content_.text_:gsub('وضع زمن التكرار','flood time')
-	if text:match("^[Ff][Ll][Oo][Oo][Dd] [Tt][Ii][Mm][Ee] (%d+)$") and is_mod(msg.sender_user_id_, msg.chat_id_) then
+	if text:match("^[Ff][Ll][Oo][Oo][Dd] [Tt][Ii][Mm][Ee] (%d+)$") and is_owner(msg.sender_user_id_, msg.chat_id_) then
 	local floodt = {string.match(text, "^([Ff][Ll][Oo][Oo][Dd] [Tt][Ii][Mm][Ee]) (%d+)$")} 
 	if tonumber(floodt[2]) < 1 then
                 if database:get('lang:gp:'..msg.chat_id_) then
@@ -6395,7 +6395,7 @@ else
 end
     end
 	-----------------------------------------------------------------------------------------------
-    if text:match("^[Cc][Ll][Ee][Aa][Nn] [Gg][Bb][Aa][Nn][Ll][Ii][Ss][Tt]$") and is_sudo(msg) or text:match("^مسح قائمه العام$") and is_sudo(msg) then
+    if text:match("^[Cc][Ll][Ee][Aa][Nn] [Gg][Bb][Aa][Nn][Ll][Ii][Ss][Tt]$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) or text:match("^مسح قائمه العام$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
     if database:get('lang:gp:'..msg.chat_id_) then
       text = '_> Banall has been_ *Cleaned*'
     else 
@@ -6405,7 +6405,7 @@ end
 	    send(msg.chat_id_, msg.id_, 1, text, 1, 'md')
   end
 
-    if text:match("^[Cc][Ll][Ee][Aa][Nn] [Aa][Dd][Mm][Ii][Nn][Ss]$") and is_sudo(msg) or text:match("^مسح ادمنيه البوت$") and is_sudo(msg) then
+    if text:match("^[Cc][Ll][Ee][Aa][Nn] [Aa][Dd][Mm][Ii][Nn][Ss]$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) or text:match("^مسح ادمنيه البوت$") and tonumber(msg.sender_user_id_) == tonumber(sudo_add) then
     if database:get('lang:gp:'..msg.chat_id_) then
       text = '_> adminlist has been_ *Cleaned*'
     else 
