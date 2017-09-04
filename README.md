@@ -80,6 +80,6 @@ TSHAKE-auto.sh
 
 • تيجي الجديد ع التوكن 💛 •
 
-ᶜʰ @TshAkETEAM
+ᶜʰ @AndroidIphoneChannel  
 
-ᵇᵒᵗ @TSHELPBOT
+ᵇᵒᵗ @Miko247Bot
